@@ -4,6 +4,7 @@
 #  hidden word
 import random
 
+print("Testing Git-Github")
 # initialize the list with the 15 words
 word_list = [
     "python",
@@ -20,7 +21,7 @@ word_list = [
     "dictionary",
     "exception",
     "iteration",
-    "framework"
+    "framework",
 ]
 
 # random choice as the hidden word
@@ -37,33 +38,33 @@ hidden_word = random.choice(word_list)
 # create a list to store the guessed letters in order not to enter them again, if they exist in the hidden word
 attempted_letters = []
 
-guessed_letters = ['_' for _ in range(len(hidden_word))]
+guessed_letters = ["_" for _ in range(len(hidden_word))]
 print(hidden_word)
 
 # initialize the max tries
 max_tries = 10
 
 # start the game
-while '_' in guessed_letters:
-    print(f'You have {max_tries} tries left.')
-    char_choice = input('Guess a letter: ').lower()
+while "_" in guessed_letters:
+    print(f"You have {max_tries} tries left.")
+    char_choice = input("Guess a letter: ").lower()
     if len(char_choice) > 1 or char_choice.isdigit() or not char_choice.isalpha():
-        print('Invalid input. Only letters! Try again.')
+        print("Invalid input. Only letters! Try again.")
     else:
         if char_choice not in hidden_word:
-            print('Wrong!')
+            print("Wrong!")
             max_tries -= 1
             if max_tries == 0:
-                print('You lose.')
+                print("You lose.")
                 break
         if char_choice in attempted_letters:
-            print('You have already guessed that letter.')
+            print("You have already guessed that letter.")
         for index, char in enumerate(hidden_word):
             if char == char_choice:
                 guessed_letters[index] = char
                 attempted_letters.append(char)
-        if ''.join(guessed_letters) == hidden_word:
-            print(f'Congrats, you won!')
+        if "".join(guessed_letters) == hidden_word:
+            print("Congrats, you won!")
             break
 
-        print(''.join(guessed_letters))
+        print("".join(guessed_letters))
